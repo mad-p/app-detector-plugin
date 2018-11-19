@@ -63,7 +63,9 @@ public class AppDetectorHandler extends Queue.QueueDecisionHandler {
     for (Action action: actions) {
       if (action instanceof ParametersAction) {
         for (ParameterValue param: ((ParametersAction)action).getParameters()) {
-          buildVars.put(param.getName(), param.getValue().toString());
+          if (param.getValue() != null) {
+            buildVars.put(param.getName(), param.getValue().toString());
+          }
         }
       }
     }
